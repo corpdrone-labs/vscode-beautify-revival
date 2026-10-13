@@ -1,0 +1,14 @@
+.git/**
+node_modules/.cache/**
+test/**
+*.vsix
+.vscode-test/**
+coverage/**
+npm-debug.log*
+.env
+.env.*
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.log

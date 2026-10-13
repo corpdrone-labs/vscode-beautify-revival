@@ -1,0 +1,139 @@
+{
+  "name": "vscode-beautify-revival",
+  "displayName": "Beautify Revival",
+  "description": "A maintained VS Code formatter extension for js-beautify.",
+  "version": "0.1.2",
+  "publisher": "corpdrone-labs",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Formatters",
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:json",
+    "onLanguage:jsonc",
+    "onLanguage:css",
+    "onLanguage:scss",
+    "onLanguage:less",
+    "onLanguage:html",
+    "onCommand:beautify-revival.beautifySelection",
+    "onCommand:beautify-revival.beautifyFile"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "json",
+        "aliases": [
+          "JSON"
+        ],
+        "filenames": [
+          ".jsbeautifyrc",
+          ".jshintrc"
+        ]
+      }
+    ],
+    "jsonValidation": [
+      {
+        "fileMatch": ".jsbeautifyrc",
+        "url": "./schema/beautifyrc.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "beautify-revival.beautifySelection",
+        "title": "Beautify Revival: Beautify Selection"
+      },
+      {
+        "command": "beautify-revival.beautifyFile",
+        "title": "Beautify Revival: Beautify File"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Beautify Revival",
+      "properties": {
+        "beautify.ignore": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Glob patterns to ignore when VS Code runs format document / format on save.",
+          "scope": "resource"
+        },
+        "beautify.config": {
+          "type": [
+            "string",
+            "object",
+            "null"
+          ],
+          "default": null,
+          "description": "Path to a js-beautify config file, or an inline js-beautify config object. A nearer .jsbeautifyrc takes precedence.",
+          "scope": "resource"
+        },
+        "beautify.language": {
+          "type": "object",
+          "description": "Map VS Code language ids, extensions, or filenames to js-beautify formatters.",
+          "default": {
+            "js": {
+              "type": [
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "json",
+                "jsonc"
+              ],
+              "filename": [
+                ".jshintrc",
+                ".jsbeautifyrc"
+              ]
+            },
+            "css": [
+              "css",
+              "less",
+              "scss"
+            ],
+            "html": [
+              "htm",
+              "html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "mocha \"test/**/*.test.js\"",
+    "test:integration": "node test/run-integration.cjs",
+    "package": "npx @vscode/vsce package --no-yarn"
+  },
+  "dependencies": {
+    "@babel/parser": "7.29.9",
+    "editorconfig": "^3.0.2",
+    "js-beautify": "^2.0.3",
+    "minimatch": "^10.2.6"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.3",
+    "mocha": "^10.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/corpdrone-labs/vscode-beautify-revival"
+  },
+  "bugs": {
+    "url": "https://github.com/corpdrone-labs/vscode-beautify-revival/issues"
+  }
+}

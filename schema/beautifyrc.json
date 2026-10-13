@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "js-beautify configuration",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "indent_size": { "type": "number" },
+    "indent_char": { "type": "string" },
+    "indent_with_tabs": { "type": "boolean" },
+    "eol": { "type": "string" },
+    "end_with_newline": { "type": "boolean" },
+    "wrap_line_length": { "type": "number" },
+    "wrap_attributes": { "type": "string" },
+    "preserve_newlines": { "type": "boolean" },
+    "max_preserve_newlines": { "type": "number" },
+    "js": { "$ref": "#" },
+    "css": { "$ref": "#" },
+    "html": { "$ref": "#" }
+  }
+}
